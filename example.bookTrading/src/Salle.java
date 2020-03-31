@@ -15,7 +15,7 @@ public class Salle extends Agent {
 			public void action() {
 				ACLMessage msg = new ACLMessage(ACLMessage.INFORM);
 						msg.setContent("test of envoi de message...");
-						msg.addReceiver(new AID("Enseignnant",AID.ISLOCALNAME));
+						msg.addReceiver(new AID("Enseignant",AID.ISLOCALNAME));
 						send(msg);
 			}
 			

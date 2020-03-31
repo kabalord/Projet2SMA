@@ -15,8 +15,27 @@ public class Enseignant extends Agent{
 			public void action() {
 				ACLMessage msg = receive();
 				if(msg != null) {
-					System.out.println(msg.getContent());
-				}else block();
+					System.out.println("Réception d'un nouveau message : ");
+					System.out.println("Contenu du message : " + msg.getContent());
+					System.out.println("Acte de communication : " + ACLMessage.getPerformative(msg.getPerformative()));
+					System.out.println("Langage : " + msg.getLanguage());
+					System.out.println("Ontologie : " + msg.getOntology());
+					
+					if(msg.getOntology().equals("Disponibilité salle") ) {
+						System.out.println("disponibilité du cours");
+						ACLMessage reponse = msg.createReply();
+						reponse.setContent("Message bien reçu");
+						send(reponse);
+					} 
+					else if(msg.getOntology().equals("Disponibilité craneaux") ) {
+						System.out.println("il y a cours...");
+						ACLMessage reponse = msg.createReply();
+						reponse.setContent("Je vais m'y préparer...");
+						send(reponse);
+					}
+				}else {
+					block();
+				} 
 			}
 			
 		});
