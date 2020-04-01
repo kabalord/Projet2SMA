@@ -2,14 +2,11 @@ import jade.core.Agent;
 import jade.core.AID;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.MessageTemplate;
-import jade.domain.DFService;
-import jade.domain.FIPAException;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
 
 public class Salle extends Agent {
 	protected void setup() {
+		// Printout a welcome message
+		System.out.println("Hello! Salle "+getAID().getName()+" is ready.");
 		addBehaviour(new OneShotBehaviour() {
 			
 			public void action() {
@@ -22,4 +19,9 @@ public class Salle extends Agent {
 		});
 	}
 
+	// Put agent clean-up operations here
+	protected void takeDown() {
+		// Printout a dismissal message
+		System.out.println("Salle "+getAID().getName()+" terminating.");
+	}
 }
